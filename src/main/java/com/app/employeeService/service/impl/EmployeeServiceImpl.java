@@ -50,4 +50,16 @@ try {
 }
 	return courseDto;
 }
+
+public CourseDto getCourseByName(String courseName) {
+	CourseDto courseDto=new CourseDto();
+	Course course=courseRepository.findByCourseName(courseName);
+try {
+	BeanUtils.copyProperties(courseDto, course);
+} catch (IllegalAccessException | InvocationTargetException e) {
+	logger.info(e.getMessage());
+	e.printStackTrace();
+}
+	return courseDto;
+}
 }

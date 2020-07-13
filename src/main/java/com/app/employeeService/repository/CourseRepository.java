@@ -5,4 +5,6 @@ import com.app.employeeService.model.Course;
 public interface CourseRepository extends JpaRepository<Course,Integer>{
 	
 public Course findByCourseId(Integer id);
+
+public Course findByCourseName(String courseName);
 }

@@ -14,14 +14,13 @@ import com.app.employeeService.dto.EmployeeResponseDto;
 import com.app.employeeService.service.impl.EmployeeServiceImpl;
 
 @RestController
-@EnableEurekaClient
 @RequestMapping("/employee")
 public class EmployeeController {
 	
 	@Autowired 
 	EmployeeServiceImpl employeeService;
 
-	@GetMapping("{id}")
+	@GetMapping("/getEmployee/{id}")
 	public EmployeeResponseDto getEmployee(@PathVariable Integer id) {
 		EmployeeDto employeeDto=employeeService.getEmployee(id);
 		EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
@@ -36,7 +35,17 @@ public class EmployeeController {
 		CourseDto courseDto=employeeService.getCourse(id);
 		CourseResponseDto courseResponseDto = new CourseResponseDto();
 		courseResponseDto.setCourseDto(courseDto);
-		courseResponseDto.setResponseMessage("sccessfully retrived employee details");
+		courseResponseDto.setResponseMessage("successfully retrived course details");
+		courseResponseDto.setResponseCode(200);
+		return courseResponseDto;
+	}
+	
+	@GetMapping("/getCourse/{courseName}")
+	public CourseResponseDto getCourseByName(@PathVariable String courseName) {
+		CourseDto courseDto=employeeService.getCourseByName(courseName);
+		CourseResponseDto courseResponseDto = new CourseResponseDto();
+		courseResponseDto.setCourseDto(courseDto);
+		courseResponseDto.setResponseMessage("successfully retrived course details");
 		courseResponseDto.setResponseCode(200);
 		return courseResponseDto;
 	}

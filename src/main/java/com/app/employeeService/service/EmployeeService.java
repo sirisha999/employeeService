@@ -9,4 +9,6 @@ public interface EmployeeService {
 	
 	public CourseDto getCourse(Integer id);
 	
+	public CourseDto getCourseByName(String courseName);
+	
 }
