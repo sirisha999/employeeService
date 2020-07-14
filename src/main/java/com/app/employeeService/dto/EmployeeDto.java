@@ -1,4 +1,4 @@
-package com.app.employeeService.dto;
+package com.app.employeeservice.dto;
 
 public class EmployeeDto {
 	

@@ -1,13 +1,11 @@
-package com.app.employeeService.service;
+package com.app.employeeservice.service;
 
-import com.app.employeeService.dto.CourseDto;
-import com.app.employeeService.dto.EmployeeDto;
+import com.app.employeeservice.dto.CourseDto;
+import com.app.employeeservice.dto.EmployeeDto;
 
 public interface EmployeeService {
 
 	public EmployeeDto getEmployee(Integer id);
-	
-	public CourseDto getCourse(Integer id);
 	
 	public CourseDto getCourseByName(String courseName);
 	

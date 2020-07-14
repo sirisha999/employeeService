@@ -1,8 +1,8 @@
-package com.app.employeeService.repository;
+package com.app.employeeservice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.app.employeeService.model.Employee;
+import com.app.employeeservice.model.Employee;
 
 public interface  EmployeeRepository extends JpaRepository<Employee,Integer>{
 public Employee findByEmployeeId(Integer id);

@@ -1,17 +1,18 @@
-package com.app.employeeService.controller;
+package com.app.employeeservice.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.employeeService.dto.CourseDto;
-import com.app.employeeService.dto.CourseResponseDto;
-import com.app.employeeService.dto.EmployeeDto;
-import com.app.employeeService.dto.EmployeeResponseDto;
-import com.app.employeeService.service.impl.EmployeeServiceImpl;
+import com.app.employeeservice.dto.CourseDto;
+import com.app.employeeservice.dto.CourseResponseDto;
+import com.app.employeeservice.dto.EmployeeDto;
+import com.app.employeeservice.dto.EmployeeResponseDto;
+import com.app.employeeservice.service.impl.EmployeeServiceImpl;
 
 @RestController
 @RequestMapping("/employee")
@@ -19,6 +20,8 @@ public class EmployeeController {
 	
 	@Autowired 
 	EmployeeServiceImpl employeeService;
+	
+	Logger logger=LoggerFactory.getLogger(EmployeeController.class);
 
 	@GetMapping("/getEmployee/{id}")
 	public EmployeeResponseDto getEmployee(@PathVariable Integer id) {
@@ -29,19 +32,9 @@ public class EmployeeController {
 		employeeResponseDto.setResponseCode(200);
 		return employeeResponseDto;
 	}
-	
-	@GetMapping("/getCourse/{id}")
-	public CourseResponseDto getCourse(@PathVariable Integer id) {
-		CourseDto courseDto=employeeService.getCourse(id);
-		CourseResponseDto courseResponseDto = new CourseResponseDto();
-		courseResponseDto.setCourseDto(courseDto);
-		courseResponseDto.setResponseMessage("successfully retrived course details");
-		courseResponseDto.setResponseCode(200);
-		return courseResponseDto;
-	}
-	
-	@GetMapping("/getCourse/{courseName}")
+	@GetMapping("/getCourseByName/{courseName}")
 	public CourseResponseDto getCourseByName(@PathVariable String courseName) {
+		logger.info("hello");
 		CourseDto courseDto=employeeService.getCourseByName(courseName);
 		CourseResponseDto courseResponseDto = new CourseResponseDto();
 		courseResponseDto.setCourseDto(courseDto);

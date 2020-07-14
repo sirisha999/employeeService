@@ -1,4 +1,4 @@
-package com.app.employeeService.model;
+package com.app.employeeservice.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

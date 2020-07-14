@@ -1,10 +1,9 @@
-package com.app.employeeService.repository;
+package com.app.employeeservice.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.app.employeeService.model.Course;
+import com.app.employeeservice.model.Course;
+@Repository
 public interface CourseRepository extends JpaRepository<Course,Integer>{
-	
-public Course findByCourseId(Integer id);
-
 public Course findByCourseName(String courseName);
 }
